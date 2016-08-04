@@ -1,6 +1,29 @@
 # ES6 Guidelines 
 
-## First things first!! Avoid the following at all cost
+Table of Contents
+----------------
+
+  * [ES6 Guidelines](#es6-guidelines)
+  * [First things first!! Avoid the following at all cost](#first-things-first-avoid-the-following-at-all-cost)
+  * [Variables](#variables)
+  * [Hoisting and let/const](#hoisting-and-letconst)
+  * [ES6 Class](#es6-class)
+  * [Objects](#objects)
+  * [Arrays](#arrays)
+  * [Destructuring](#destructuring)
+  * [Strings](#strings)
+  * [Functions](#functions)
+  * [Properties](#properties)
+  * [Syntax](#syntax)
+  * [ES6 modules](#es6-modules)
+  * [Type Casting](#type-casting)
+  * [undefined](#undefined)
+  * [Utilities](#utilities)
+  * [Promises](#promises)
+  * [Resources](#resources)
+
+
+# First things first!! Avoid the following at all cost
 
   - `eval` 
   - `setTimeout(string)` (Note: `setTimeout(function)` is acceptable), `setInterval(string)`
@@ -8,7 +31,7 @@
   - `var`. Use `let` and `const` instead.
   - `==`. Use `===` instead.
 
-## Variables
+# Variables
 
 - All variables should be `camelCase`
 
@@ -30,7 +53,7 @@ let length = 100;
 - Use the following convention for constants: `LIKE_THIS`.
 
 
-## Hoisting and let/const
+# Hoisting and let/const
 
 - Variables declared using `var` are hoisted to the top of their scope as are `const` and `let`, however the only difference is accessing `const` and `let` throws `ReferenceError` if 
   accessed before being initialized and `var` returns `undefined`.  Read more : http://jsrocks.org/2015/01/temporal-dead-zone-tdz-demystified/
@@ -213,7 +236,7 @@ class Person {
 ```
  
 
-## Objects
+# Objects
 
 - An `Object` declaration should always be in `camelCase`, with first letter in Lowercase.
 
@@ -276,7 +299,7 @@ const obj = {
 ```
   
 
-## Arrays
+# Arrays
 
 - An `Array` declaration should always be in `camelCase`, with first letter in Lowercase.
 
@@ -310,7 +333,7 @@ function sort(...args) {
 }
 ```
 
-## Destructuring
+# Destructuring
 - Use object destructuring to avoid use of temporary variables
 
 ```js
@@ -336,7 +359,7 @@ const [first, second] = arr;
 
 ```
 
-## Strings
+# Strings
 
 - A Static `string` declaration should always be in **single quotes `'`** AVOID double quotes.
 - A Dynamic `string` declaration should always be in **backticks ```**
@@ -354,7 +377,7 @@ const fullName = `Mr ${fname} ${lname}`;
 ```
 
 
-## Functions
+# Functions
 
 - Use regular function declarations. **AVOID** function expressions (instead use the Arrow functions) 
 
@@ -470,7 +493,7 @@ function foo() {
 }
 ```
 
-## Properties
+# Properties
 
 - Always use Dot notation for getting properties
 
@@ -487,7 +510,7 @@ obj.key = value; // Note: For some keys you will have to use the subscript notat
 ```
 
 
-## Syntax
+# Syntax
 
 - **NEVER EVER** use tab. Please configure your editor to convert tabs to spaces.
 
@@ -529,7 +552,7 @@ if(true) {
 ```js
 // bad
 if(true)
- return "Hello;
+ return "Hello";
 
 // good
 if(true) {
@@ -547,31 +570,7 @@ function square(x) { return x * x }
 function square(x) { return x * x; }
 
 ```
-
-
-# Utilities
-
-- Use forEach/map more instead of `for`, `for in` etc. With ES6 there is hardly any need for using traditional `for` loop.
-
-```js
-const scores = [12, 42, 27, 18];
-let total = 0;
-
-// bad
-for(i = 0; i < scores.length; i++) {
-    total = total + scores[i];
-}
-
-// good
-scores.forEach( (score) => total += score);
-
-```
-
-- Use forEach() / map() / every() / filter() / find() / findIndex() / reduce() / some() / ... to iterate over arrays.
-
-- Use Object.keys() / Object.values() / Object.entries() to produce arrays so you can iterate over objects.
-
-## ES6 modules
+# ES6 modules
 
 -- Always use ES6 modules instead of `require`
 
@@ -609,24 +608,7 @@ export default Person;
 
 ```
 
-## undefined
-
-- Always use `void 0` where you want to use `undefined`
-
-```js
-// bad
-if(x === undefined) {
-  ...
-}
-
-// good
-if(x === void 0) {
-  ...
-}
-```
-
-
-## Type Casting 
+# Type Casting 
 - Use the following for casting to `String` / `Number` etc
 
 ```js
@@ -662,12 +644,54 @@ const truth = 0;
 const isTrue = Boolean(truth);
 
 ```
-## Promises
+
+# undefined
+
+- Always use `void 0` where you want to use `undefined`
+
+```js
+// bad
+if(x === undefined) {
+  ...
+}
+
+// good
+if(x === void 0) {
+  ...
+}
+```
+
+
+
+# Utilities
+
+- Use forEach/map more instead of `for`, `for in` etc. With ES6 there is hardly any need for using traditional `for` loop.
+
+```js
+const scores = [12, 42, 27, 18];
+let total = 0;
+
+// bad
+for(i = 0; i < scores.length; i++) {
+    total = total + scores[i];
+}
+
+// good
+scores.forEach( (score) => total += score);
+
+```
+
+- Use forEach() / map() / every() / filter() / find() / findIndex() / reduce() / some() / ... to iterate over arrays.
+
+- Use Object.keys() / Object.values() / Object.entries() to produce arrays so you can iterate over objects.
+
+
+# Promises
 
 - Consider using `bluebird`, instead of Native `Promise`.
 
 
-## Resources 
+# Resources 
 
 
 
