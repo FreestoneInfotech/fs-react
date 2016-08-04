@@ -1,9 +1,10 @@
 # ES6 Guidelines 
 
 Table of Contents
-----------------
+-----------------
 
   * [ES6 Guidelines](#es6-guidelines)
+    * [Table of Contents](#table-of-contents)
   * [First things first!! Avoid the following at all cost](#first-things-first-avoid-the-following-at-all-cost)
   * [Variables](#variables)
   * [Hoisting and let/const](#hoisting-and-letconst)
@@ -14,14 +15,13 @@ Table of Contents
   * [Strings](#strings)
   * [Functions](#functions)
   * [Properties](#properties)
-  * [Syntax](#syntax)
   * [ES6 modules](#es6-modules)
   * [Type Casting](#type-casting)
   * [undefined](#undefined)
+  * [Whitespaces, comments, curly braces etc style guide](#whitespaces-comments-curly-braces-etc-style-guide)
   * [Utilities](#utilities)
   * [Promises](#promises)
   * [Resources](#resources)
-
 
 # First things first!! Avoid the following at all cost
 
@@ -508,68 +508,6 @@ obj['key'] = value;
 // good
 obj.key = value; // Note: For some keys you will have to use the subscript notation. But try to avoid defining such keynames.
 ```
-
-
-# Syntax
-
-- **NEVER EVER** use tab. Please configure your editor to convert tabs to spaces.
-
-- **ALWAYS** use 4-char space instead of 2.
-
-```js
-// bad
-Class Person{
-<tab>let _v;
-}
-
-// good
-Class Person{
-<4 spaces>let _v;
-}
-```
-
-- Use `/* ... */` for multiline comments
-
-- Use `//` for single line comments
-
-- Always start the `{` of `if` / `for` / `while` etc on the **same line** 
-
-```js
-// bad
-if (true) 
-{
-  ...
-}
-
-// good
-if(true) {
-  ...
-}
-```
-
-- Always use a block, even if the block is of single statement.
-
-```js
-// bad
-if(true)
- return "Hello";
-
-// good
-if(true) {
-  return "Hello";
-}
-```
-
-- Always use semicolons to end the statement. 
-
-```js
-// bad
-function square(x) { return x * x }
-
-// good
-function square(x) { return x * x; }
-
-```
 # ES6 modules
 
 -- Always use ES6 modules instead of `require`
@@ -659,6 +597,67 @@ if(x === undefined) {
 if(x === void 0) {
   ...
 }
+```
+
+# Whitespaces, comments, curly braces etc style guide
+
+- **NEVER EVER** use tab. Please configure your editor to convert tabs to spaces.
+
+- **ALWAYS** use 4-char space instead of 2.
+
+```js
+// bad
+Class Person{
+<tab>let _v;
+}
+
+// good
+Class Person{
+<4 spaces>let _v;
+}
+```
+
+- Use `/* ... */` for multiline comments
+
+- Use `//` for single line comments
+
+- Always start the `{` of `if` / `for` / `while` etc on the **same line** 
+
+```js
+// bad
+if (true) 
+{
+  ...
+}
+
+// good
+if(true) {
+  ...
+}
+```
+
+- Always use a block, even if the block is of single statement.
+
+```js
+// bad
+if(true)
+ return "Hello";
+
+// good
+if(true) {
+  return "Hello";
+}
+```
+
+- Always use semicolons to end the statement. 
+
+```js
+// bad
+function square(x) { return x * x }
+
+// good
+function square(x) { return x * x; }
+
 ```
 
 
