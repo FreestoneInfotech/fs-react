@@ -139,12 +139,24 @@ app.post('/post', function(req, res) {
 /*Post Get All*/
 
 app.get('/posts', function(req, res) {
+    var perPage = req.param('pageSize') || 50
+    var startIndex = req.param('startIndex') || 0
     Post.find()
+        .limit(perPage)
+        .skip(startIndex)
         .populate('author')
         .exec(function(err, posts) {
             if (err)
                 res.send(err);
-            res.json(posts);
+            Post.count().exec(function (err, count) {
+                res.json({
+                    posts: posts,
+                    startIndex: startIndex,
+                    resultSize: posts.length,
+                    total: count,
+                    pageSize: perPage
+                })
+            })
         });
 });
 
