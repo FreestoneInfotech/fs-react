@@ -7,9 +7,11 @@ import { Label } from 'react-bootstrap';
 import {fb_table_data, system_enums} from '../../data/demo/demo_data';
 import {TextCell, AlertCodeCell, AlertLevelCell, ButtonCell} from '../fixed_data_table/fdt_cells';
 import StructuredFilter from '../../lib/react-structured-filter/main';
+import { observer } from 'mobx-react';
 
 const {Table, Column, Cell} = FixedDataTable;
 
+@observer
 export default class FacebookDataTable extends React.Component {
     constructor(props) {
         super(props);
@@ -31,33 +33,6 @@ export default class FacebookDataTable extends React.Component {
         this.filteredIndexes = new Set(); // using set so it has unique values
 
     }
-
-    /*
-    _onFilterChange(e) {
-        if (!e.target.value) {
-            this.setState({
-                filteredDataList: this._dataList,
-            });
-        }
-
-        var filterBy = e.target.value.toLowerCase();
-        var allData = this._dataList.getAll();
-        allData.forEach((d,i) => {
-            Object.values(d).forEach( (e) => {
-                if (e.toLowerCase().includes(filterBy)){
-                    console.log(`pushing one match. $i`)
-                    this.filteredIndexes.add(i);
-                }
-            });
-
-        });
-        console.log('filtered size :', this.filteredIndexes.size);
-
-        this.setState({
-            filteredDataList: new DataListWrapper([...this.filteredIndexes], allData),
-        });
-    }
-    */
 
     updateFilter(flt){
         this.filteredIndexes.clear();
