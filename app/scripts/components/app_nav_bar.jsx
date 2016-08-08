@@ -17,6 +17,12 @@ export default class AppNavBar extends Component {
                       <li>
                               <NavLink to="/facebook-data-table"><i className="fa fa-search-plus"></i> Facebook Data Table </NavLink>
                       </li>
+                      <li>
+                              <NavLink to="/bootstrap-components"><i className="fa fa-search-plus"></i> Bootstrap Components </NavLink>
+                      </li>
+                      <li>
+                              <NavLink to="/notifications"><i className="fa fa-search-plus"></i> Notification </NavLink>
+                      </li>
                   </ul>
               </div>
             </aside>

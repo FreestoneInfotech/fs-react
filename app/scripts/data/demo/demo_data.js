@@ -16,8 +16,8 @@ function randomDate() {
 	return myDate.toDateString() + " " + myDate.toLocaleTimeString();
 }
 
-let alert_headers = 'Date,Product,Hacker Code,Department,Blogger,Admin,Application,Actions';
-let alert_records = `
+let fb_table_headers = 'Date,Product,Hacker Code,Department,Blogger,Admin,Application,Actions';
+let fb_table_records = `
     ${randomDate()}, ${faker.random.arrayElement(system_enums.product)},    ${faker.random.arrayElement(system_enums.hacker_code)}, ${faker.random.arrayElement(system_enums.department)},   ${faker.name.firstName()} ${faker.name.lastName()}, ${faker.name.firstName()} ${faker.name.lastName()},     ${faker.random.arrayElement(system_enums.application)}, edit==alert==delete
     ${randomDate()}, ${faker.random.arrayElement(system_enums.product)},    ${faker.random.arrayElement(system_enums.hacker_code)},   ${faker.random.arrayElement(system_enums.department)}, ${faker.name.firstName()} ${faker.name.lastName()}, ${faker.name.firstName()} ${faker.name.lastName()},  ${faker.random.arrayElement(system_enums.application)},  edit==alert==delete
     ${randomDate()}, ${faker.random.arrayElement(system_enums.product)},    ${faker.random.arrayElement(system_enums.hacker_code)},  ${faker.random.arrayElement(system_enums.department)},   ${faker.name.firstName()} ${faker.name.lastName()}, ${faker.name.firstName()} ${faker.name.lastName()},  ${faker.random.arrayElement(system_enums.application)},   edit==alert==delete
@@ -79,9 +79,9 @@ let alert_records = `
     ${randomDate()}, ${faker.random.arrayElement(system_enums.product)},    ${faker.random.arrayElement(system_enums.hacker_code)},  ${faker.random.arrayElement(system_enums.department)},   ${faker.name.firstName()} ${faker.name.lastName()}, ${faker.name.firstName()} ${faker.name.lastName()},  ${faker.random.arrayElement(system_enums.application)},   edit==alert==delete
     ${randomDate()}, ${faker.random.arrayElement(system_enums.product)},    ${faker.random.arrayElement(system_enums.hacker_code)},  ${faker.random.arrayElement(system_enums.department)},  ${faker.name.firstName()} ${faker.name.lastName()}, ${faker.name.firstName()} ${faker.name.lastName()},  ${faker.random.arrayElement(system_enums.application)},    edit==alert==delete
 `;
-let alert_data = alert_headers + '\n' + alert_records;
+let fb_table_data = fb_table_headers + '\n' + fb_table_records;
 
 export {
-    alert_data,
+    fb_table_data,
     system_enums,
 };

@@ -1,25 +1,22 @@
 import React, {Component} from 'react';
-import {DataListWrapper,FakeDataStore} from '../../data/FakeDataStore'
+import {DataListWrapper,FakeDataStore} from '../../data/fake_data_store'
 import FixedDataTable from 'fixed-data-table';
 import Papa from 'papaparse';
 import _ from 'lodash';
 import { Label } from 'react-bootstrap';
-import {alert_data} from '../../data/demo/demoData';
-import {TextCell, AlertCodeCell, AlertLevelCell, ButtonCell} from '../FixedDataTable/FDTCells';
+import {fb_table_data, system_enums} from '../../data/demo/demo_data';
+import {TextCell, AlertCodeCell, AlertLevelCell, ButtonCell} from '../fixed_data_table/fdt_cells';
 import StructuredFilter from '../../lib/react-structured-filter/main';
-import {system_enums} from '../../data/demo/demoData';
 
 const {Table, Column, Cell} = FixedDataTable;
 
-export default class AlertsTable extends React.Component {
+export default class FacebookDataTable extends React.Component {
     constructor(props) {
         super(props);
-        var results = Papa.parse(alert_data, {
+        var results = Papa.parse(fb_table_data, {
             header: true,
             skipEmptyLines: true,
         });
-        //results.data.shift();
-        //results.data.pop();
         console.log(results);
         this._dataList = new FakeDataStore(results);
 
@@ -111,12 +108,12 @@ export default class AlertsTable extends React.Component {
                              placeholder="Search.."
                              options={[
                                {category:"Date", type:"date"},
-                               {category:"Alert", type:"text"},
-                               {category:"Alert Code", type:"textoptions", options:function(){ return system_enums.alert_code;}},
-                               {category:"Alert Level", type:"textoptions", options:function(){ return system_enums.alert_levels;}},
-                               {category:"Provider", type:"text"},
-                               {category:"Patient", type:"text"},
-                               {category:"Application", type:"textoptions", options:function(){ return system_enums.applications;}}
+                               {category:"Product", type:"text"},
+                               {category:"Hacker Code", type:"text"},
+                               {category:"Department", type: 'text'/*type:"textoptions", options:function(){ return system_enums.department;}*/},
+                               {category:"Blogger", type:"text"},
+                               {category:"Admin", type:"text"},
+                               {category:"Application", type:"text"}
                                ]}
                              customClasses={{
                                input: "filter-tokenizer-text-input",
@@ -143,32 +140,32 @@ export default class AlertsTable extends React.Component {
                             width={200}
                             />
                         <Column
-                            header={<Cell>Alert</Cell>}
-                            cell={<TextCell data={filteredDataList} col="Alert" />}
+                            header={<Cell>Product</Cell>}
+                            cell={<TextCell data={filteredDataList} col="Product" />}
                             fixed={true}
                             width={200}
                             />
                         <Column
-                            header={<Cell>Alert Code</Cell>}
-                            cell={<AlertCodeCell data={filteredDataList} col="Alert Code" />}
+                            header={<Cell>Hacker Code</Cell>}
+                            cell={<TextCell data={filteredDataList} col="Hacker Code" />}
                             fixed={true}
                             width={100}
                             />
                         <Column
-                            header={<Cell>Alert Level</Cell>}
-                            cell={<AlertLevelCell data={filteredDataList} col="Alert Level" />}
+                            header={<Cell>Department</Cell>}
+                            cell={<TextCell data={filteredDataList} col="Department" />}
                             fixed={true}
                             width={100}
                             />
                         <Column
-                            header={<Cell>Provider</Cell>}
-                            cell={<TextCell data={filteredDataList} col="Provider" />}
+                            header={<Cell>Blogger</Cell>}
+                            cell={<TextCell data={filteredDataList} col="Blogger" />}
                             fixed={true}
                             width={100}
                             />
                         <Column
-                            header={<Cell>Patient</Cell>}
-                            cell={<TextCell data={filteredDataList} col="Patient" />}
+                            header={<Cell>Admin</Cell>}
+                            cell={<TextCell data={filteredDataList} col="Admin" />}
                             fixed={true}
                             width={100}
                             />
