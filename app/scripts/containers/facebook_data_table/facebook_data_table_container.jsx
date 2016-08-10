@@ -6,7 +6,8 @@ import BaseContainer from '../base_container';
 import FacebookDataTable from '../../components/facebook_data_table/facebook_data_table';
 import { Tab, Tabs } from 'react-bootstrap';
 import { observer } from 'mobx-react';
-
+import Post from '../../data/models/post'
+import store from '../../data/store'
 @observer
 export default class FacebookDataTableContainer extends Component {
     handleSelect(eventKey) {

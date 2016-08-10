@@ -10,20 +10,20 @@ const {Cell} = FixedDataTable;
 
 const DateCell = ({rowIndex, data, col, ...props}) => (
     <Cell {...props}>
-        {data.getData(rowIndex,col).toLocaleString()}
+        {data.get(rowIndex,col).toLocaleString()}
     </Cell>
 );
 
 const TextCell = ({rowIndex, data, col, ...props}) => (
     <Cell {...props}>
-        {data.getData(rowIndex,col)}
+        {(data)? data.get(rowIndex,col) : "NODATA"}
     </Cell>
 );
 
 const AlertCodeCell = ({rowIndex, data, col, ...props}) => (
     <Cell {...props}>
         <Label bsStyle="primary">
-            {data.getData(rowIndex,col)}
+            {data.get(rowIndex,col)}
         </Label>
     </Cell>
 );
@@ -31,7 +31,7 @@ const AlertCodeCell = ({rowIndex, data, col, ...props}) => (
 const AlertLevelCell = ({rowIndex, data, col, ...props}) => (
     <Cell {...props}>
         <Label bsStyle={(() => {
-                switch (data.getData(rowIndex,col).toLowerCase()) {
+                switch (data.get(rowIndex,col).toLowerCase()) {
                     case "high":   return "danger";
                     case "medium": return "warning";
                     case "low":  return "primary";
@@ -42,7 +42,7 @@ const AlertLevelCell = ({rowIndex, data, col, ...props}) => (
                 }
             })()}
                >
-            {data.getData(rowIndex,col)}
+            {data.get(rowIndex,col)}
         </Label>
     </Cell>
 );
@@ -50,7 +50,7 @@ const AlertLevelCell = ({rowIndex, data, col, ...props}) => (
 const CheckboxCell = ({rowIndex, data, col, ...props}) => (
     <Cell {...props}>
         { (() => {
-            if(data.getData(rowIndex,col).toLowerCase() == 'yes') {
+            if(data.get(rowIndex,col).toLowerCase() == 'yes') {
                 return <Checkbox checked onChange={()=>{}}/>
             } else {
                 return <Checkbox />

@@ -9,7 +9,16 @@ export default class FSHttpAdapter extends HttpAdapter {
     deserialize(mapper, response, opts) {
         // Call the original deserialize
         response = super.deserialize(mapper, response, opts);
-        // Process response here and return it
-        return response;
+
+        let data = response.posts;
+        if (response && 'pageSize' in response ) {
+          data._meta = {
+            pageSize: response.pageSize,
+            resultSize: response.resultSize,
+            startIndex: response.startIndex,
+            total : response.total
+          };
+        }
+        return data;
     }
 }

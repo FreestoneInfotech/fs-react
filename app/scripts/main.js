@@ -6,6 +6,8 @@ import { render } from 'react-dom';
 import { Router, browserHistory, hashHistory } from 'react-router';
 import { IntlProvider, FormattedNumber, FormattedPlural } from 'react-intl';
 import NotificationSystem from 'react-notification-system'
+import DevTools from 'mobx-react-devtools';
+
 
 export default class Root extends Component {
   _notificationSystem = null
@@ -18,6 +20,7 @@ export default class Root extends Component {
         <div>
           <Router history={hashHistory} routes={routes} />
           <NotificationSystem ref="notificationSystem" />
+          <DevTools />
         </div>
     )
   }

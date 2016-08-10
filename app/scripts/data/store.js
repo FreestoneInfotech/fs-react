@@ -8,13 +8,15 @@ import FSHttpAdapter from '../data/fs_http_adapter';
 import Post from '../data/models/post';
 import User from '../data/models/user';
 import Article from '../data/models/article';
+import { observer, observable } from 'mobx';
+
 
 let storeSingleton = new FSDataStore({
     mapperClass : FSMapper
 });
 
 storeSingleton.registerAdapter('http', new FSHttpAdapter({
-    basePath: 'http://localhost:3000/api',
+    basePath: 'http://localhost:3000/',
     suffix : '/'
 }), {
     default: true
@@ -26,13 +28,22 @@ storeSingleton.registerAdapter('http', new FSHttpAdapter({
 */
 
 storeSingleton.defineMapper('post', {
-    recordClass: Post
+    recordClass: Post,
+    endpoint: 'post',  // The URL endpoint. This will be: basePath + endpoint
+    actions: {
+      getDisabledPosts: {
+        path: 'disabled'
+        method: 'GET'
+      }
+  }
+
     //applySchema: true,
     //schema: PersonSchema
 });
 
 storeSingleton.defineMapper('article', {
-    recordClass: Article
+    recordClass: Article,
+    endpoint: 'article',
 });
 
 
@@ -48,8 +59,8 @@ storeSingleton.defineMapper('user', {
     endpoint : 'users'
 });
 
-
-
-export default storeSingleton;
+let observableStore = observable(storeSingleton);
+console.log(observableStore);
+console.log(storeSingleton);
+export default observableStore;
 //storeSingleton.defineMapper('post', PostConfig)
-
